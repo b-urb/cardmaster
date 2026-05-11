@@ -5,14 +5,15 @@
   "schedule": ["before 5am on monday"],
   "packageRules": [
     {
-      "description": "Automerge patch updates",
-      "matchUpdateTypes": ["patch"],
-      "automerge": true
+      "description": "Automerge patch and minor updates when CI passes",
+      "matchUpdateTypes": ["patch", "minor"],
+      "automerge": true,
+      "automergeType": "pr"
     },
     {
-      "description": "Group all minor updates into one PR",
-      "matchUpdateTypes": ["minor"],
-      "groupName": "all minor updates"
+      "description": "Major updates require manual approval",
+      "matchUpdateTypes": ["major"],
+      "automerge": false
     }
   ]
 }
