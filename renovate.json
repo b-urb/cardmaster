@@ -1,24 +1,18 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended"
-  ],
-  "baseBranches": [
-    "development"
-  ],
+  "extends": ["config:recommended"],
+  "timezone": "Europe/Berlin",
+  "schedule": ["before 5am on monday"],
   "packageRules": [
     {
-      "matchUpdateTypes": [
-        "minor"
-      ],
-      "groupName": "all minor updates",
-      "groupSlug": "all-minor"
+      "description": "Automerge patch updates",
+      "matchUpdateTypes": ["patch"],
+      "automerge": true
     },
     {
-      "matchUpdateTypes": [
-        "patch"
-      ],
-      "automerge": true
+      "description": "Group all minor updates into one PR",
+      "matchUpdateTypes": ["minor"],
+      "groupName": "all minor updates"
     }
   ]
 }
